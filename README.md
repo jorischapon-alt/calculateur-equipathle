@@ -1,38 +1,49 @@
-# Calculateur Equip'Athlé Minimes 🏅
+# 🏅 Calculateur Equip'Athlé Minimes (Edition 2026)
 
-Une Web Application pointue, au design exclusif "Dark Forest", conçue sur-mesure pour calculer et optimiser le total de points d'une équipe d'athlétisme catégorie Minimes. L'outil intègre nativement et de façon automatisée l'ensemble des règles et des grilles de cotations complexes de la FFA (Fédération Française d'Athlétisme) pour l'année 2026.
+> **L'outil indispensable pour les entraîneurs d'athlétisme souhaitant optimiser leurs compositions d'équipe en temps réel.**
 
-## 🎯 Fonctionnalités Clés
+Ce calculateur est une **Web Application statique** conçue pour simplifier la gestion des compétitions d'Equip'Athlé (catégorie Minimes). Il automatise les calculs de points, vérifie les règles de triathlon et de mixité, et génère un rapport PDF professionnel pour la table de marque.
 
-- **Système de Cotation Automatique** : Saisissez la performance brute, l'application vous l'a convertie instantanément en points FFA officiels.
-- **Auto-Détection des Formats de Courses** : Adieu les calculs savants et conversions manuelles. Tapez un temps chronométré de la façon la plus naturelle possible :
-    - `3:15.22`
-    - `3'15"22`
-    - `195.22`
-    *(Ces 3 formats seront auto-convertis en l'équivalent secondes pour s'ajuster parfaitement aux seuils d'exigence FFA).*
-- **Moteur de Règles FFA Intégré** :
-    - **Mixité obligatoire** surveillée (validation si l'équipe compte au moins 2 Filles et 2 Garçons).
-    - **Validation du Relais (4x60m Mixte)** et des **Jeunes Juges**.
-    - **Contrôle des Triathlons** : Validation algorithmique stricte de la structure "Triathlon" de chaque athlète (soit Généraliste, soit Orienté Courses/Sauts/Lancers).
-    - **Limitation d'équipe** : Retient uniquement la *meilleure performance* par discipline pour l'équipe sans avoir à s'en soucier.
-- **Fusion Intelligente des Épreuves** : Le 80m Haies (Filles) et le 100m Haies (Garçons) sont logiquement connectés pour se concurrencer sur la même ligne au bénéfice de l'équipe.
-- **Export PDF Professionnel** : Impression d'un fichier de résultat A4 propre, brutaliste, listant les performances retenues, le bilan individuel des triathlons et le score final, prêt à être tendu à la table des juges.
-- **100% Hors-Ligne & Zéro Données Privées** : Vos données restent dans le navigateur de votre appareil. S'il n'y a plus de 4G sur le stade, l'application fonctionnera toujours (une fois lancée).
+![Aperçu de l'application](https://jorischapon-alt.github.io/calculateur-equipathle/)
 
-## 🚀 Guide de Déploiement "1 Clic" (GitHub Pages)
+## ✨ Points Forts
 
-Puisque cette application ne possède **ni backend lourd, ni base de données distante**, elle est 100% "statique". Ce qui signifie que vous pouvez l'héberger de façon illimitée et gratuitement sur GitHub Pages en 5 minutes.
+*   **⚡️ Performance & Rapidité** : Calcul instantané sans rechargement de page.
+*   **🎯 Intelligence Embarquée** : Prise en charge des formats de chronométrage complexes (`3:15.22`, `3'15"22`).
+*   **⚖️ Conformité FFA** : Surveillance automatique de la mixité (2F/2G), du relais mixte et des structures de triathlons.
+*   **🌑 Design "Nothing OS"** : Une interface unique en "Dark Forest" brutalisme, optimisée pour la lecture sur le terrain (tablettes/smartphones).
+*   **🔒 Confidentialité Totale** : Aucune donnée n'est envoyée sur un serveur. Tout est traité localement sur votre appareil.
 
-1. Allez sur [GitHub](https://github.com/) et créez un **Nouveau Repository** (Pensez à bien sélectionner "Public").
-2. Prenez TOUS les fichiers de ce projet (`index.html`, le dossier `css`, le dossier `js`, et de préférence `GUIDE_UTILISATEUR.md` ainsi que ce `README.md`) et glissez-les via l'interface web de GitHub pour les uploader.
-3. Cliquez sur le bouton vert **"Commit changes"**.
-4. Dans GitHub, rendez-vous dans l'onglet **Settings** de votre repository.
-5. À gauche, cliquez sur la rubrique **Pages**.
-6. Sous "Build and deployment" (Source : Deploy from a branch), choisissez la branche `main` (ou `master`), puis sauvegardez.
-7. Patientez 2 minutes et GitHub vous affichera un lien du type `https://votre-club.github.io/calculateur-equipathle`.
+## 🛠️ Installation Rapide (GitHub Pages)
 
-Partagez ce lien avec tout l'encadrement de l'équipe. Ils pourront travailler parallèlement et générer autant d'équipes qu'ils le souhaitent, simultanément !
+L'application est prête à l'emploi et ne nécessite aucun serveur. Pour la mettre en ligne gratuitement :
 
-## 📘 Documentation
+1. Créez un nouveau dépôt sur GitHub.
+2. Déposez-y les dossiers `css/`, `js/` et les fichiers `index.html`, `LICENSE`.
+3. Activez **GitHub Pages** dans les réglages du dépôt.
 
-Pour savoir comment un entraîneur doit se servir de l'outil et comprendre les codes à saisir en compétition (ex: `DQ`, `AB`), veuillez vous référer au fichier **[GUIDE_UTILISATEUR.md](./GUIDE_UTILISATEUR.md)** fourni dans l'archive.
+## 📖 Utilisation
+
+Toutes les instructions pour les entraîneurs sont disponibles dans le **[Guide Utilisateur](./GUIDE_UTILISATEUR.md)**.
+
+## ⚖️ Licence
+
+## 🛠️ Coulisses Techniques & Développement
+
+Cette application a été conçue avec une approche **"Brutaliste & Minimaliste"**, privilégiant la rapidité et l'indépendance technologique :
+
+-   **Langages** : HTML5 sémantique, CSS3 (Vanilla) et JavaScript (ES6+). Aucun framework lourd (React/Vue) n'a été utilisé pour garantir un chargement instantané.
+-   **Design System** : Inspiré par **Nothing OS**, utilisant des polices à matrice de points (`DotGothic16`) et un contraste profond (Dark Forest) pour une lisibilité maximale sur le terrain.
+-   **Moteur de Données** : Cotations FFA stockées localement dans `js/db.js` pour éliminer toute latence ou erreur de connexion (CORS) lors de l'usage hors-ligne.
+-   **Export** : Intégration de la librairie `html2pdf.js` pour transformer dynamiquement le DOM en document PDF formaté A4.
+
+### 🤖 Processus de Développement
+Ce projet a été réalisé via une interface de programmation assistée par l'agent IA **Antigravity** (Google DeepMind). L'architecture logicielle et l'intégration des règles métier (barèmes FFA 2026) ont été itérées en binôme, permettant une transcription rapide de la logique de compétition en code JavaScript modulaire et performant.
+
+---
+
+## ⚖️ Licence
+
+Ce projet est distribué sous **Licence MIT**. Voir le fichier [LICENSE](./LICENSE) pour plus de détails.
+
+---
