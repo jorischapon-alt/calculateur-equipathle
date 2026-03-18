@@ -9,7 +9,7 @@ Ce calculateur est une **Web Application statique** conçue pour simplifier la g
 *   **⚡️ Performance & Rapidité** : Calcul instantané sans rechargement de page.
 *   **🎯 Intelligence Embarquée** : Prise en charge des formats de chronométrage complexes (`3:15.22`, `3'15"22`).
 *   **⚖️ Conformité FFA** : Surveillance automatique de la mixité (2F/2G), du relais mixte et des structures de triathlons.
-*   **🌑 Design "Nothing OS"** : Une interface unique en "Dark Forest", optimisée pour la lecture sur tablettes et pc.  
+*   **🌑 Design** : Une interface unique en "Dark Forest", optimisée pour la lecture sur tablettes et pc.  
 *   **🔒 Confidentialité Totale** : Aucune donnée n'est envoyée sur un serveur. Tout est traité localement sur votre appareil.
 
 ## 🛠️ Installation Rapide (GitHub Pages)
