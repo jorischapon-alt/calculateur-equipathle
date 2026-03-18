@@ -1,6 +1,6 @@
 # Calculateur Equip'Athlé Minimes 🏅
 
-Une Web Application pointue, au design exclusif "Dark Forest Brutalism", conçue sur-mesure pour calculer et optimiser le total de points d'une équipe d'athlétisme catégorie Minimes. L'outil intègre nativement et de façon automatisée l'ensemble des règles et des grilles de cotations complexes de la FFA (Fédération Française d'Athlétisme) pour l'année 2026.
+Une Web Application pointue, au design exclusif "Dark Forest", conçue sur-mesure pour calculer et optimiser le total de points d'une équipe d'athlétisme catégorie Minimes. L'outil intègre nativement et de façon automatisée l'ensemble des règles et des grilles de cotations complexes de la FFA (Fédération Française d'Athlétisme) pour l'année 2026.
 
 ## 🎯 Fonctionnalités Clés
 
