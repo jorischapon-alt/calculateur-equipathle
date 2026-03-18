@@ -4,8 +4,6 @@
 
 Ce calculateur est une **Web Application statique** conçue pour simplifier la gestion des compétitions d'Equip'Athlé (catégorie Minimes). Il automatise les calculs de points, vérifie les règles de triathlon et de mixité, et génère un rapport PDF professionnel pour la table de marque.
 
-![Aperçu de l'application](https://jorischapon-alt.github.io/calculateur-equipathle/)
-
 ## ✨ Points Forts
 
 *   **⚡️ Performance & Rapidité** : Calcul instantané sans rechargement de page.
