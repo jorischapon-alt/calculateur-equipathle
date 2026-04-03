@@ -20,21 +20,37 @@ const DataManager = {
         return Object.keys(this.db.scoring_tables);
     },
 
-    parsePerformance(perfValue) {
+    parsePerformance(perfValue, discipline = '') {
         let strValue = String(perfValue).trim().toUpperCase();
         if (["AB", "NM", "DQ", "DNF"].includes(strValue)) {
             return { isSpecial: true, value: 1 }; // 1 point for participation failures
         }
 
-        strValue = strValue.replace(',', '.');
+        // Convertit "3M10" ou "3m10" en "3.10"
+        strValue = strValue.replace(/(\d+)M(\d*)/g, '$1.$2');
+        strValue = strValue.replace(/,/g, '.');
 
-        // Match MM:SS.ms or MM'SS"ms format
-        const minSecMatch = strValue.match(/^(\d+)[:'](\d{1,2})[."]??(\d*)$/);
-        if (minSecMatch) {
-            const minutes = parseInt(minSecMatch[1], 10);
-            const seconds = parseInt(minSecMatch[2], 10);
-            const fraction = minSecMatch[3] ? parseFloat('0.' + minSecMatch[3]) : 0;
+        const isDemiFond = discipline.includes('1000') || discipline.includes('2000') || discipline.includes('3000') || discipline.toLowerCase().includes('marche');
+
+        // Regex for exactly 3 parts separated by dots, colons, or quotes: MM.SS.cc or MM:SS:cc
+        const tripleMatch = strValue.match(/^(\d+)[:\.'"](\d{2})[:\.'"](\d+)$/);
+        if (tripleMatch) {
+            const minutes = parseInt(tripleMatch[1], 10);
+            const seconds = parseInt(tripleMatch[2], 10);
+            const fraction = parseFloat('0.' + tripleMatch[3]);
             return { isSpecial: false, value: (minutes * 60) + seconds + fraction };
+        }
+
+        // Regex for 2 parts separated by dots, colons, or quotes: MM.SS or MM:SS
+        const doubleMatch = strValue.match(/^(\d+)[:\.'"](\d{1,2})$/);
+        if (doubleMatch) {
+            const hasTimeSeparator = strValue.includes(':') || strValue.includes("'");
+            // If explicit time separator OR it's a DemiFond logic
+            if (hasTimeSeparator || isDemiFond) {
+                const minutes = parseInt(doubleMatch[1], 10);
+                const seconds = parseInt(doubleMatch[2], 10);
+                return { isSpecial: false, value: (minutes * 60) + seconds };
+            }
         }
 
         const perfNum = parseFloat(strValue);
@@ -48,7 +64,7 @@ const DataManager = {
     getPoints(discipline, gender, perfValue) {
         if (!this.db || !this.db.scoring_tables[discipline]) return 0;
 
-        const parsedPerf = this.parsePerformance(perfValue);
+        const parsedPerf = this.parsePerformance(perfValue, discipline);
         if (!parsedPerf) return 0;
 
         if (parsedPerf.isSpecial) return parsedPerf.value;

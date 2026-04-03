@@ -41,11 +41,13 @@ window.AppState = {
 
         // Add Relais and Jeune Juge
         if (this.equipe.relais4x60) {
-            sum += parseInt(this.equipe.pointsRelais) || 0;
+            const rPts = parseInt(this.equipe.pointsRelais, 10);
+            if (!isNaN(rPts)) sum += rPts;
         }
 
         if (this.equipe.jeuneJuge) {
-            sum += parseInt(this.equipe.pointsJuge) || 0;
+            const jPts = parseInt(this.equipe.pointsJuge, 10);
+            if (!isNaN(jPts)) sum += jPts;
         }
 
         this.totalScore = sum;
@@ -59,19 +61,45 @@ window.AppState = {
 
     // Add or update an entry from the grid
     updatePerformance(rowId, discipline, gender, athleteName, perfValue, dbDiscipline = discipline) {
-        // remove existing entry for this cell
-        this.performances = this.performances.filter(p => p.id !== rowId);
+        if (typeof athleteName !== 'string') athleteName = '';
+        if (typeof perfValue !== 'string') perfValue = '';
 
-        if (perfValue.trim() !== "") {
-            const pts = DataManager.getPoints(dbDiscipline, gender, perfValue);
-            this.performances.push({
+        const safePerfValue = perfValue.trim();
+        const safeAthleteName = athleteName.trim();
+        
+        const idx = this.performances.findIndex(p => p.id === rowId);
+
+        if (safePerfValue !== "") {
+            let pts = 0;
+            try {
+                if (typeof DataManager !== 'undefined' && typeof DataManager.getPoints === 'function') {
+                    pts = DataManager.getPoints(dbDiscipline, gender, safePerfValue);
+                }
+            } catch (e) {
+                console.error("DataManager Error on getPoints:", e);
+            }
+
+            const newPerf = {
                 id: rowId,
                 discipline,
                 gender,
-                athleteName: athleteName.trim() || `Inconnu (${gender})`,
-                perf: perfValue,
+                athleteName: safeAthleteName || `Inconnu (${gender})`,
+                perf: safePerfValue,
                 pts: pts
-            });
+            };
+
+            if (idx !== -1) {
+                // Update existing object exactly
+                this.performances[idx] = newPerf;
+            } else {
+                // Append new element 
+                this.performances.push(newPerf);
+            }
+        } else {
+            // Remove safely if empty
+            if (idx !== -1) {
+                this.performances.splice(idx, 1);
+            }
         }
     }
 };
