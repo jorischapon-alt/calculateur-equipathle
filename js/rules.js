@@ -2,9 +2,9 @@
 window.RulesEngine = {
     // Defines families based on user specs inside dashboard
     eventFamilies: {
-        sprint: ['80m', '120m'],
-        haies: ['80/100m haies', '80mhaies', '200m haies', '200mhaies'],
-        demiFond: ['1000m', '2000m', '3000m', '3000m marche', 'marche'],
+        sprint: ['50m', '80m', '120m'],
+        haies: ['80/100m haies', '50mh', '80mh', '100mh', '80mhaies', '200mh', '200m haies', '200mhaies'],
+        demiFond: ['1000m', '2000m', '3000m', '3000m marche', '3000mmarche', 'marche'],
         saut: ['hauteur', 'perche', 'longueur', 'triple'],
         lancer: ['poids', 'disque', 'marteau', 'javelot']
     },

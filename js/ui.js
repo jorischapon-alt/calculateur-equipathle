@@ -30,8 +30,8 @@ const UI = {
             const val = e.target.value.trim();
             if (val) {
                 // The db key for relay points is likely "4x60m" or "relais" 
-                // We'll use G table for calculations or assume the same scale, usually in Equip'Athlé relays use the global mixed table, let's try 'G' as default scale lookup since mix is identical.
-                const pts = DataManager.getPoints('4x60m', 'G', val) || DataManager.getPoints('4x60m', 'F', val) || DataManager.getPoints('relais', 'G', val) || 0;
+                // Using 4x60m-Mixte as requested for the mixed relay scoring
+                const pts = DataManager.getPoints('4x60m-Mixte', 'G', val) || DataManager.getPoints('4x60m', 'G', val) || DataManager.getPoints('4x60m', 'F', val) || DataManager.getPoints('relais', 'G', val) || 0;
                 AppState.equipe.relais4x60 = true;
                 AppState.equipe.pointsRelais = pts;
                 this.relaisPointsDisplay.textContent = `+${pts} pts`;
